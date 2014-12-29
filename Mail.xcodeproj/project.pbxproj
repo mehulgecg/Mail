@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8E899E3E1A510414000EF6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3D1A510414000EF6C8 /* AppDelegate.swift */; };
 		8E899E401A510414000EF6C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3F1A510414000EF6C8 /* ViewController.swift */; };
-		8E899E431A510414000EF6C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E899E411A510414000EF6C8 /* Main.storyboard */; };
 		8E899E451A510414000EF6C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E899E441A510414000EF6C8 /* Images.xcassets */; };
 		8E899E481A510414000EF6C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E899E461A510414000EF6C8 /* LaunchScreen.xib */; };
 		8E899E541A510415000EF6C8 /* MailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E531A510415000EF6C8 /* MailTests.swift */; };
@@ -30,7 +29,6 @@
 		8E899E3C1A510414000EF6C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E899E3D1A510414000EF6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E899E3F1A510414000EF6C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8E899E421A510414000EF6C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E899E441A510414000EF6C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8E899E471A510414000EF6C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8E899E4D1A510414000EF6C8 /* MailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +77,6 @@
 			children = (
 				8E899E3D1A510414000EF6C8 /* AppDelegate.swift */,
 				8E899E3F1A510414000EF6C8 /* ViewController.swift */,
-				8E899E411A510414000EF6C8 /* Main.storyboard */,
 				8E899E441A510414000EF6C8 /* Images.xcassets */,
 				8E899E461A510414000EF6C8 /* LaunchScreen.xib */,
 				8E899E3B1A510414000EF6C8 /* Supporting Files */,
@@ -192,7 +189,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E899E431A510414000EF6C8 /* Main.storyboard in Resources */,
 				8E899E481A510414000EF6C8 /* LaunchScreen.xib in Resources */,
 				8E899E451A510414000EF6C8 /* Images.xcassets in Resources */,
 			);
@@ -236,14 +232,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8E899E411A510414000EF6C8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8E899E421A510414000EF6C8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8E899E461A510414000EF6C8 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -405,6 +393,7 @@
 				8E899E591A510415000EF6C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E899E5A1A510415000EF6C8 /* Build configuration list for PBXNativeTarget "MailTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +402,7 @@
 				8E899E5C1A510415000EF6C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
