@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-gtm-http-fetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>62C7ADB77B5C22680A6B40EB</key>
+		<key>5BAA34D57E9F1F36675B31EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8B785948B905D9C21BC022A2</key>
+		<key>7592B017D388452BEE3DF839</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A01D799A56D50C6077AE69C6</key>
+		<key>D36D39A59466B0707BBA4D8B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE861EED4C9EB276F0906C7A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

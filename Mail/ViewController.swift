@@ -20,19 +20,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //if not signed in
-        signIntoGoogle()
-
         setupTable()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        Gmail.emails(token(), completion: { (result) -> Void in
-            self.emails = result
-            self.table?.reloadData()
-        })
+
+        if let token = token() {
+            Gmail.emails(token, completion: { (success, result) -> Void in
+                if success {
+                    self.emails = result
+                    self.table?.reloadData()
+                }
+            })
+        } else {
+            signIntoGoogle()
+        }
     }
 
     func setupTable() {
@@ -95,7 +98,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         NSUserDefaults.standardUserDefaults().setObject(token, forKey: "auth")
     }
 
-    func token() -> String {
-        return NSUserDefaults.standardUserDefaults().objectForKey("auth") as String
+    func token() -> String? {
+        return NSUserDefaults.standardUserDefaults().objectForKey("auth") as String?
     }
 }

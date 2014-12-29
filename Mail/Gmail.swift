@@ -10,14 +10,26 @@ import UIKit
 
 class Gmail: NSObject {
 
-    class func emails(token: String, completion: (result: Array<Email>) -> Void) {
+    class func emails(token: String, completion: (success: Bool, result: Array<Email>) -> Void) {
 
         var emails: Array<Email> = []
 
-        //call gmail api
-        //turn results into Email objects
-        //load into an array calles emails
+        let url = "https://www.googleapis.com/gmail/v1/users/me/messages"
+        let params = ["token":token]
 
-        completion(result: emails)
+        var manager = AFHTTPRequestOperationManager()
+
+        manager.GET(url, parameters: params, success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            println("SUCCESS")
+            println(responseObject)
+
+            //turn results into Email objects
+            //load into an array calles emails
+            completion(success: true, result: emails)
+        }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            println("FAIL: \(error.localizedDescription)")
+            completion(success: false, result: [])
+        }
+
     }
 }
