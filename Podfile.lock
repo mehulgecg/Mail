@@ -26,6 +26,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
+  - gtm-http-fetcher (~> 1.0)
   - gtm-oauth2 (~> 1.0)
 
 SPEC CHECKSUMS:

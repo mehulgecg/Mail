@@ -12,6 +12,8 @@
 #import "GTMOAuth2Authentication.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 
+#import "GTMHTTPFetcher.h"
+
 #import "AFHTTPRequestOperationManager.h"
 
 #endif

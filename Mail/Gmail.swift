@@ -10,26 +10,28 @@ import UIKit
 
 class Gmail: NSObject {
 
-    class func emails(token: String, completion: (success: Bool, result: Array<Email>) -> Void) {
+    class func emails(auth: GTMOAuth2Authentication, completion: (success: Bool, result: Array<Email>) -> Void) {
 
         var emails: Array<Email> = []
 
-        let url = "https://www.googleapis.com/gmail/v1/users/me/messages"
-        let params = ["token":token]
+        let url = NSURL(string: "https://www.googleapis.com/gmail/v1/users/me/messages")
+        let request = NSURLRequest(URL: url!)
+        let fetcher = GTMHTTPFetcher(request: request)
+        auth.shouldAuthorizeAllRequests = true
+        fetcher.authorizer = auth
+        fetcher.beginFetchWithCompletionHandler { (data: NSData!, error: NSError!) -> Void in
+            if error == nil {
 
-        var manager = AFHTTPRequestOperationManager()
+                let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+                println("JSON: \(json)")
 
-        manager.GET(url, parameters: params, success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
-            println("SUCCESS")
-            println(responseObject)
-
-            //turn results into Email objects
-            //load into an array calles emails
-            completion(success: true, result: emails)
-        }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-            println("FAIL: \(error.localizedDescription)")
-            completion(success: false, result: [])
+                //turn results into Email objects
+                //load into an array calles emails
+                completion(success: true, result: emails)
+            } else {
+                println("ERROR: \(error)")
+                completion(success: false, result: emails)
+            }
         }
-
     }
 }

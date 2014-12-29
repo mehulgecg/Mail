@@ -10,10 +10,14 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let GoogleClientID = "114010924229-ukr4q38c62r7rkoiig6p373n62oeb3j0.apps.googleusercontent.com"
-    let GoogleClientSecret = "rAmXi-Eu78US1ST7mI840p9-"
+    let GoogleClientID = "114010924229-1gp2fr10fnp6933vp5522fa1megqiqpb.apps.googleusercontent.com"
+    let GoogleClientSecret = "-fGFy6eUW55ObueAM1eQtS6e"
     let GoogleAuthURL = "https://accounts.google.com/o/oauth2/auth"
     let GoogleTokenURL = "https://accounts.google.com/o/oauth2/token"
+    let GoogleScope = "https://mail.google.com/"
+    let GoogleKeychainName = "GoogleKeychainName"
+
+    var auth: GTMOAuth2Authentication?
 
     var table: UITableView?
     var emails: Array<Email>?
@@ -26,8 +30,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let token = token() {
-            Gmail.emails(token, completion: { (success, result) -> Void in
+        authenticate()
+
+        if auth!.canAuthorize {
+            Gmail.emails(auth!, completion: { (success, result) -> Void in
                 if success {
                     self.emails = result
                     self.table?.reloadData()
@@ -69,36 +75,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let tokenURL = NSURL(string: GoogleTokenURL)
         let redirectURI = "urn:ietf:wg:oauth:2.0:oob"
         var auth: GTMOAuth2Authentication = GTMOAuth2Authentication.authenticationWithServiceProvider("mailmessages", tokenURL: tokenURL, redirectURI: redirectURI, clientID: GoogleClientID, clientSecret: GoogleClientSecret) as GTMOAuth2Authentication
-        auth.scope = "https://www.googleapis.com/auth/userinfo.profile"
+        auth.scope = GoogleScope
         return auth
     }
 
     func signIntoGoogle() {
 
-        let viewController = GTMOAuth2ViewControllerTouch(authentication: authForGoogle(), authorizationURL: NSURL(string: GoogleAuthURL), keychainItemName: "GoogleKeychainName", completionHandler: { (viewController: GTMOAuth2ViewControllerTouch!, auth: GTMOAuth2Authentication!, error: NSError!) -> Void in
+        let viewController = GTMOAuth2ViewControllerTouch(scope: GoogleScope, clientID: GoogleClientID, clientSecret: GoogleClientSecret, keychainItemName: GoogleKeychainName) { (viewController: GTMOAuth2ViewControllerTouch!, auth: GTMOAuth2Authentication!, error: NSError!) -> Void in
 
-                println("finished")
-                println("auth access token: \(auth.accessToken)")
-
-                self.saveToken(auth.accessToken)
+            if error == nil {
                 self.dismissViewControllerAnimated(true, completion: nil)
-
-                if let err = error {
-                    println("FAIL")
-                } else {
-                    println("WIN")
-                }
-
-            })
+                //handle error
+            }
+        }
 
         navigationController?.presentViewController(viewController, animated: true, completion: nil)
     }
 
-    func saveToken(token: String) {
-        NSUserDefaults.standardUserDefaults().setObject(token, forKey: "auth")
-    }
-
-    func token() -> String? {
-        return NSUserDefaults.standardUserDefaults().objectForKey("auth") as String?
+    func authenticate() {
+        auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(GoogleKeychainName, clientID: GoogleClientID, clientSecret: GoogleClientID)
     }
 }
