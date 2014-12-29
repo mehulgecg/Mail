@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func vcs() -> UIViewController {
-        return ViewController()
+        return UINavigationController(rootViewController: ViewController())
     }
 }
 

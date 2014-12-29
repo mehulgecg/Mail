@@ -1,0 +1,13 @@
+PODS:
+  - gtm-http-fetcher (1.0.141)
+  - gtm-oauth2 (1.0.125):
+    - gtm-http-fetcher (~> 1.0.141)
+
+DEPENDENCIES:
+  - gtm-oauth2 (~> 1.0)
+
+SPEC CHECKSUMS:
+  gtm-http-fetcher: 6d4617e7d343b6e4c082b777541c334eb6f5d81e
+  gtm-oauth2: 3f97d22a6066a80df0b1f878c1ce41176472daad
+
+COCOAPODS: 0.35.0
