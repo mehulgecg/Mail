@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12A5997033CE151BF7357C1E"
+               BlueprintIdentifier = "D7017737B27B60FCB1DD0CCB"
                BuildableName = "libPods-gtm-http-fetcher.a"
                BlueprintName = "Pods-gtm-http-fetcher"
                ReferencedContainer = "container:Pods.xcodeproj">

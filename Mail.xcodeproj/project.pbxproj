@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3A57DAC55CAD08EA0523C7EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4EC8BCF574A4F88A60ED6E /* libPods.a */; };
+		8E1B6D121A8C59030011664B /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B6D111A8C59030011664B /* Google.swift */; };
 		8E899E3E1A510414000EF6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3D1A510414000EF6C8 /* AppDelegate.swift */; };
 		8E899E401A510414000EF6C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3F1A510414000EF6C8 /* ViewController.swift */; };
 		8E899E451A510414000EF6C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E899E441A510414000EF6C8 /* Images.xcassets */; };
 		8E899E481A510414000EF6C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E899E461A510414000EF6C8 /* LaunchScreen.xib */; };
 		8E899E541A510415000EF6C8 /* MailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E531A510415000EF6C8 /* MailTests.swift */; };
 		8E899E601A51143D000EF6C8 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E5F1A51143D000EF6C8 /* Email.swift */; };
-		8E899E621A51147D000EF6C8 /* Gmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E611A51147D000EF6C8 /* Gmail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		3D4EC8BCF574A4F88A60ED6E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E1B6D111A8C59030011664B /* Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Google.swift; sourceTree = "<group>"; };
 		8E899E381A510414000EF6C8 /* Mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E899E3C1A510414000EF6C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E899E3D1A510414000EF6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		8E899E5D1A510645000EF6C8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		8E899E5E1A5107FD000EF6C8 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		8E899E5F1A51143D000EF6C8 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
-		8E899E611A51147D000EF6C8 /* Gmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gmail.swift; sourceTree = "<group>"; };
 		D43DE526983428723EFABAD5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EE1EAD0988DFAAC4AB646C0C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,7 +99,7 @@
 				8E899E5D1A510645000EF6C8 /* Podfile */,
 				8E899E5E1A5107FD000EF6C8 /* BridgingHeader.h */,
 				8E899E3D1A510414000EF6C8 /* AppDelegate.swift */,
-				8E899E611A51147D000EF6C8 /* Gmail.swift */,
+				8E1B6D111A8C59030011664B /* Google.swift */,
 				8E899E5F1A51143D000EF6C8 /* Email.swift */,
 				8E899E3F1A510414000EF6C8 /* ViewController.swift */,
 				8E899E441A510414000EF6C8 /* Images.xcassets */,
@@ -277,10 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E899E621A51147D000EF6C8 /* Gmail.swift in Sources */,
 				8E899E401A510414000EF6C8 /* ViewController.swift in Sources */,
 				8E899E3E1A510414000EF6C8 /* AppDelegate.swift in Sources */,
 				8E899E601A51143D000EF6C8 /* Email.swift in Sources */,
+				8E1B6D121A8C59030011664B /* Google.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +399,7 @@
 				INFOPLIST_FILE = Mail/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Dropbox/Dev/PROJECTS/Mail/Mail/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Dropbox/Dev/Workspace/Mail/Mail/BridgingHeader.h;
 			};
 			name = Debug;
 		};
@@ -411,7 +411,7 @@
 				INFOPLIST_FILE = Mail/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Dropbox/Dev/PROJECTS/Mail/Mail/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/sapanbhuta/Dropbox/Dev/Workspace/Mail/Mail/BridgingHeader.h;
 			};
 			name = Release;
 		};

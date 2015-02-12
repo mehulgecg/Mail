@@ -23,15 +23,21 @@ PODS:
   - gtm-http-fetcher (1.0.141)
   - gtm-oauth2 (1.0.125):
     - gtm-http-fetcher (~> 1.0.141)
+  - JSQMessagesViewController (6.1.3):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - gtm-http-fetcher (~> 1.0)
   - gtm-oauth2 (~> 1.0)
+  - JSQMessagesViewController
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   gtm-http-fetcher: 6d4617e7d343b6e4c082b777541c334eb6f5d81e
   gtm-oauth2: 3f97d22a6066a80df0b1f878c1ce41176472daad
+  JSQMessagesViewController: e93a288a9662d4519c95a28a8c0eec10beae1bfc
+  JSQSystemSoundPlayer: 55528c699a283aae2220d3ae7b8b527d2ecef4b4
 
 COCOAPODS: 0.35.0
