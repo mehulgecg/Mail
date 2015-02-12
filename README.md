@@ -1,4 +1,4 @@
 Mail
 ====
 
-SMS like Gmail Client
+Gmail Client
