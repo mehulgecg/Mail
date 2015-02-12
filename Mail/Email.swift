@@ -9,5 +9,10 @@
 import UIKit
 
 class Email: NSObject {
-    var subject: String?
+    var sender: String = ""
+    var recipient: String = ""
+    var subject: String = ""
+    var content: String = ""
+    var googleId: String = ""
+    var googleThreadId: String = ""
 }

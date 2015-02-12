@@ -17,7 +17,10 @@ class Google: NSObject {
     let GoogleKeychainName = "GoogleKeychainName"
     let GoogleServiceProvider = "mailmessages"
 
-    weak var vc: ViewController!
+    var auth: GTMOAuth2Authentication!
+    weak var vc: UIViewController!
+
+    var threads: NSMutableArray = []
 
     func savedAuth() -> GTMOAuth2Authentication {
         return GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(GoogleKeychainName, clientID: GoogleClientID, clientSecret: GoogleClientID) as GTMOAuth2Authentication
@@ -31,51 +34,79 @@ class Google: NSObject {
         return auth
     }
 
-    func signIn(completion: (success: Bool, auth: GTMOAuth2Authentication) -> Void) {
+    func signIn(completion: (success: Bool, error: NSError!) -> Void) {
         let viewController = GTMOAuth2ViewControllerTouch(authentication: authForGoogle(), authorizationURL: NSURL(string: GoogleAuthURL), keychainItemName: GoogleKeychainName) { (viewController: GTMOAuth2ViewControllerTouch!, auth: GTMOAuth2Authentication!, error: NSError!) -> Void in
-
+            self.auth = auth
             println("finished")
             println("auth access token: \(auth.accessToken)")
-
             viewController.dismissViewControllerAnimated(true, completion: nil)
-
-            if error != nil {
-                completion(success: false, auth: auth)
-                UIAlertView(title: "Error Authorizing with Google", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
-            } else {
-                completion(success: true, auth: auth)
-                UIAlertView(title: "Success Authorizing with Google", message: "", delegate: nil, cancelButtonTitle: "OK").show()
-            }
+            completion(success: error == nil, error: error)
         }
         vc.navigationController?.presentViewController(viewController, animated: true, completion: nil)
     }
 
-    func emails(completion: (success: Bool, result: NSArray) -> Void) {
-
-        signIn { (success, auth) -> Void in
-            if success {
-                var emails: Array<Email> = []
-
-                let url = NSURL(string: "https://www.googleapis.com/gmail/v1/users/me/messages")
-                let request = NSURLRequest(URL: url!)
-                let fetcher = GTMHTTPFetcher(request: request)
-                auth.shouldAuthorizeAllRequests = true
-                fetcher.authorizer = auth
-                fetcher.beginFetchWithCompletionHandler { (data: NSData!, error: NSError!) -> Void in
-                    if error == nil {
-                        let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
-                        println("JSON: \(json)")
-                        //turn results into Email objects
-                        //load into an array calles emails
-                        completion(success: true, result: emails)
-                    } else {
-                        println("ERROR: \(error)")
-                        completion(success: false, result: emails)
+    func threads(completion: (success: Bool) -> Void) {
+        let url = NSURL(string: "https://www.googleapis.com/gmail/v1/users/me/threads")
+        let request = NSURLRequest(URL: url!)
+        let fetcher = GTMHTTPFetcher(request: request)
+        auth.shouldAuthorizeAllRequests = true
+        fetcher.authorizer = auth
+        fetcher.beginFetchWithCompletionHandler { (data: NSData!, error: NSError!) -> Void in
+            if error == nil {
+                let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+                if json != nil {
+                    let threadsDict = (json! as NSDictionary)["threads"] as NSArray
+                    for threadDict in threadsDict {
+                        self.threads.addObject(Google.threadify(threadDict as NSDictionary))
                     }
                 }
+                completion(success: true)
             } else {
-                completion(success: false, result: [])
+                println("Error: \(error)")
+                completion(success: false)
             }
         }
+    }
+
+    func emailsInThread(threadIndex: Int, completion: (success: Bool) -> Void) {
+        let thread = threads[threadIndex] as Thread
+        let url = NSURL(string: ("https://www.googleapis.com/gmail/v1/users/me/threads/"+thread.threadId))
+        let request = NSURLRequest(URL: url!)
+        let fetcher = GTMHTTPFetcher(request: request)
+        auth.shouldAuthorizeAllRequests = true
+        fetcher.authorizer = auth
+        fetcher.beginFetchWithCompletionHandler { (data: NSData!, error: NSError!) -> Void in
+            if error == nil {
+                let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+                if json != nil {
+                    println(json!)
+                    let emailsArra = (json! as NSDictionary)["messages"] as NSArray
+                    thread.emails = Google.emailify(emailsArra)
+                    completion(success: true)
+                } else {
+                    completion(success: false)
+                }
+            } else {
+                println("Error: \(error)")
+                completion(success: false)
+            }
+        }
+    }
+
+    class func threadify(threadDict: NSDictionary) -> Thread {
+        let thread = Thread()
+        thread.threadId = threadDict["id"] as String
+        thread.historyId = threadDict["historyId"] as String
+        thread.snippet = threadDict["snippet"] as String
+        return thread
+    }
+
+    class func emailify(emailsArra: NSArray) -> NSMutableArray {
+        var emails: NSMutableArray = []
+        for email in emails {
+            
+        }
+
+        return emails
     }
 }

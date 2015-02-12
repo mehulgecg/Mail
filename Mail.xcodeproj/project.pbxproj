@@ -10,11 +10,13 @@
 		3A57DAC55CAD08EA0523C7EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4EC8BCF574A4F88A60ED6E /* libPods.a */; };
 		8E1B6D121A8C59030011664B /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B6D111A8C59030011664B /* Google.swift */; };
 		8E899E3E1A510414000EF6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3D1A510414000EF6C8 /* AppDelegate.swift */; };
-		8E899E401A510414000EF6C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3F1A510414000EF6C8 /* ViewController.swift */; };
+		8E899E401A510414000EF6C8 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3F1A510414000EF6C8 /* InboxViewController.swift */; };
 		8E899E451A510414000EF6C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E899E441A510414000EF6C8 /* Images.xcassets */; };
 		8E899E481A510414000EF6C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E899E461A510414000EF6C8 /* LaunchScreen.xib */; };
 		8E899E541A510415000EF6C8 /* MailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E531A510415000EF6C8 /* MailTests.swift */; };
 		8E899E601A51143D000EF6C8 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E5F1A51143D000EF6C8 /* Email.swift */; };
+		8ED645D21A8CF1D00034FAE5 /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED645D11A8CF1D00034FAE5 /* Thread.swift */; };
+		8ED645D61A8CF3470034FAE5 /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED645D51A8CF3470034FAE5 /* InboxView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +35,7 @@
 		8E899E381A510414000EF6C8 /* Mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E899E3C1A510414000EF6C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E899E3D1A510414000EF6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8E899E3F1A510414000EF6C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8E899E3F1A510414000EF6C8 /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		8E899E441A510414000EF6C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8E899E471A510414000EF6C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8E899E4D1A510414000EF6C8 /* MailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +44,8 @@
 		8E899E5D1A510645000EF6C8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		8E899E5E1A5107FD000EF6C8 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		8E899E5F1A51143D000EF6C8 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		8ED645D11A8CF1D00034FAE5 /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
+		8ED645D51A8CF3470034FAE5 /* InboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		D43DE526983428723EFABAD5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EE1EAD0988DFAAC4AB646C0C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,9 +103,9 @@
 				8E899E5D1A510645000EF6C8 /* Podfile */,
 				8E899E5E1A5107FD000EF6C8 /* BridgingHeader.h */,
 				8E899E3D1A510414000EF6C8 /* AppDelegate.swift */,
-				8E1B6D111A8C59030011664B /* Google.swift */,
-				8E899E5F1A51143D000EF6C8 /* Email.swift */,
-				8E899E3F1A510414000EF6C8 /* ViewController.swift */,
+				8ED645D31A8CF1D60034FAE5 /* Models */,
+				8ED645D71A8CF34A0034FAE5 /* Views */,
+				8ED645D41A8CF1DD0034FAE5 /* Controllers */,
 				8E899E441A510414000EF6C8 /* Images.xcassets */,
 				8E899E461A510414000EF6C8 /* LaunchScreen.xib */,
 				8E899E3B1A510414000EF6C8 /* Supporting Files */,
@@ -132,6 +136,32 @@
 				8E899E521A510415000EF6C8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8ED645D31A8CF1D60034FAE5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E1B6D111A8C59030011664B /* Google.swift */,
+				8ED645D11A8CF1D00034FAE5 /* Thread.swift */,
+				8E899E5F1A51143D000EF6C8 /* Email.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		8ED645D41A8CF1DD0034FAE5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E899E3F1A510414000EF6C8 /* InboxViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8ED645D71A8CF34A0034FAE5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8ED645D51A8CF3470034FAE5 /* InboxView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F53C79801F29B23D17F864D3 /* Pods */ = {
@@ -277,7 +307,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E899E401A510414000EF6C8 /* ViewController.swift in Sources */,
+				8E899E401A510414000EF6C8 /* InboxViewController.swift in Sources */,
+				8ED645D61A8CF3470034FAE5 /* InboxView.swift in Sources */,
+				8ED645D21A8CF1D00034FAE5 /* Thread.swift in Sources */,
 				8E899E3E1A510414000EF6C8 /* AppDelegate.swift in Sources */,
 				8E899E601A51143D000EF6C8 /* Email.swift in Sources */,
 				8E1B6D121A8C59030011664B /* Google.swift in Sources */,

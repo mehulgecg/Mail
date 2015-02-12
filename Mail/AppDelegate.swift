@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func vcs() -> UIViewController {
-        return UINavigationController(rootViewController: ViewController())
+        return UINavigationController(rootViewController: InboxViewController())
     }
 }
 
