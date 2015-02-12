@@ -46,5 +46,6 @@ class InboxView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let threadViewController = ThreadViewController()
         threadViewController.thread = vc.google.threads[indexPath.row] as Thread
+        vc.navigationController?.pushViewController(threadViewController, animated: true)
     }
 }
