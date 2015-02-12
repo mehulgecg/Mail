@@ -30,15 +30,21 @@ class InboxView: UIView, UITableViewDelegate, UITableViewDataSource {
         let cellId: NSString = "cell"
         var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellId) as? UITableViewCell
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: cellId)
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
+            cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }
 
         let thread = vc.google.threads[indexPath.row] as Thread
-
-        println("THREAD: \(thread)")
-
-        cell?.textLabel?.text = thread.historyId
-        cell?.detailTextLabel?.text = thread.threadId
+        let latestEmail = thread.emails.lastObject as Email
+        cell?.textLabel?.text = latestEmail.from
+        cell?.detailTextLabel?.text = latestEmail.subject
         return cell!
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow() as NSIndexPath!
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let threadViewController = ThreadViewController()
+        threadViewController.thread = vc.google.threads[indexPath.row] as Thread
     }
 }

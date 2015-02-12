@@ -9,8 +9,8 @@
 import UIKit
 
 class Thread: NSObject {
-    var threadId: String = ""
-    var historyId: String = ""
+    var threadId: NSString = ""
+    var historyId: NSString = ""
     var snippet = ""
     var emails: NSMutableArray = []
 }

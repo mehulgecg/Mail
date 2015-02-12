@@ -68,18 +68,18 @@ class Google: NSObject {
         }
     }
 
-    func emailsInThread(threadIndex: Int, completion: (success: Bool) -> Void) {
-        let thread = threads[threadIndex] as Thread
+    func emailsInThread(thread: Thread, completion: (success: Bool) -> Void) {
         let url = NSURL(string: ("https://www.googleapis.com/gmail/v1/users/me/threads/"+thread.threadId))
         let request = NSURLRequest(URL: url!)
         let fetcher = GTMHTTPFetcher(request: request)
         auth.shouldAuthorizeAllRequests = true
         fetcher.authorizer = auth
+
+
         fetcher.beginFetchWithCompletionHandler { (data: NSData!, error: NSError!) -> Void in
             if error == nil {
                 let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
                 if json != nil {
-                    println(json!)
                     let emailsArra = (json! as NSDictionary)["messages"] as NSArray
                     thread.emails = Google.emailify(emailsArra)
                     completion(success: true)
@@ -95,16 +95,35 @@ class Google: NSObject {
 
     class func threadify(threadDict: NSDictionary) -> Thread {
         let thread = Thread()
-        thread.threadId = threadDict["id"] as String
-        thread.historyId = threadDict["historyId"] as String
-        thread.snippet = threadDict["snippet"] as String
+        thread.threadId = threadDict["id"] as NSString
+        thread.historyId = threadDict["historyId"] as NSString
+        thread.snippet = threadDict["snippet"] as NSString
         return thread
     }
 
     class func emailify(emailsArra: NSArray) -> NSMutableArray {
         var emails: NSMutableArray = []
-        for email in emails {
-            
+        for emailGenr in emailsArra {
+            let emailDict = emailGenr as NSDictionary
+            let email = Email()
+            email.googleId = emailDict["id"] as NSString
+            email.googleThreadId = emailDict["threadId"] as NSString
+            email.labelsIds = NSMutableArray(array: emailDict["labelIds"] as NSArray)
+            email.snippet = emailDict["snippet"] as NSString
+            let payload = emailDict["payload"] as NSDictionary
+            let headers = payload["headers"] as NSArray
+
+            for header in headers {
+                let name = (header as NSDictionary)["name"] as NSString
+                if name.isEqualToString("From") {
+                    email.subject = (header as NSDictionary)["value"] as NSString
+                } else if name.isEqualToString("Subject") {
+                    email.subject = (header as NSDictionary)["value"] as NSString
+                } else if name.isEqualToString("To") {
+                    email.to = (header as NSDictionary)["value"] as NSString
+                }
+            }
+            emails.addObject(email)
         }
 
         return emails

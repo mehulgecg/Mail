@@ -24,6 +24,7 @@ class InboxViewController: UIViewController {
         google.vc = self
         google.signIn { (success, error) -> Void in
             if success {
+                self.getThreads()
                 UIAlertView(title: "Success Authorizing with Google", message: "", delegate: nil, cancelButtonTitle: "OK").show()
             } else {
                 UIAlertView(title: "Error Authorizing with Google", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK").show()
@@ -33,17 +34,21 @@ class InboxViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if google.auth != nil {
-            getEmails()
-        } else {
-            //sign in
-        }
     }
 
-    func getEmails() {
+    func getThreads() {
         google.threads({ (success) -> Void in
             if success {
-                self.inboxView.table.reloadData()
+                var total = self.google.threads.count
+                var count = 0
+                for thread in self.google.threads {
+                    self.google.emailsInThread(thread as Thread, completion: { (success) -> Void in
+                        count = count + 1
+                        if count == total {
+                            self.inboxView.table.reloadData()
+                        }
+                    })
+                }
             } else {
                 UIAlertView(title: "Error", message: "Failed to Get Emails", delegate: nil, cancelButtonTitle: "OK").show()
             }

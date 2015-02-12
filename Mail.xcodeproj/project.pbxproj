@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A57DAC55CAD08EA0523C7EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D4EC8BCF574A4F88A60ED6E /* libPods.a */; };
 		8E1B6D121A8C59030011664B /* Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1B6D111A8C59030011664B /* Google.swift */; };
+		8E7D70491A8D1B7500EB09D8 /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7D70481A8D1B7500EB09D8 /* ThreadViewController.swift */; };
 		8E899E3E1A510414000EF6C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3D1A510414000EF6C8 /* AppDelegate.swift */; };
 		8E899E401A510414000EF6C8 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E899E3F1A510414000EF6C8 /* InboxViewController.swift */; };
 		8E899E451A510414000EF6C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E899E441A510414000EF6C8 /* Images.xcassets */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		3D4EC8BCF574A4F88A60ED6E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E1B6D111A8C59030011664B /* Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Google.swift; sourceTree = "<group>"; };
+		8E7D70481A8D1B7500EB09D8 /* ThreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		8E899E381A510414000EF6C8 /* Mail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E899E3C1A510414000EF6C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E899E3D1A510414000EF6C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				8E899E3F1A510414000EF6C8 /* InboxViewController.swift */,
+				8E7D70481A8D1B7500EB09D8 /* ThreadViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				8E899E401A510414000EF6C8 /* InboxViewController.swift in Sources */,
 				8ED645D61A8CF3470034FAE5 /* InboxView.swift in Sources */,
 				8ED645D21A8CF1D00034FAE5 /* Thread.swift in Sources */,
+				8E7D70491A8D1B7500EB09D8 /* ThreadViewController.swift in Sources */,
 				8E899E3E1A510414000EF6C8 /* AppDelegate.swift in Sources */,
 				8E899E601A51143D000EF6C8 /* Email.swift in Sources */,
 				8E1B6D121A8C59030011664B /* Google.swift in Sources */,
